@@ -13,14 +13,15 @@ class MainWindow(QMainWindow):
 
         all_stats_label = []
         all_stats_input_value = []
-        layout = QGridLayout()
+        layout_for_stats_button = QGridLayout()
+        layout_for_result = QGridLayout()
 
         for stats in range(0,len(gear_stats)):
             stats_label = QLabel(gear_stats[stats])
             all_stats_label.append(stats_label)
             all_stats_input_value.append(QLineEdit())
-            layout.addWidget(all_stats_label[stats], stats, 0)
-            layout.addWidget(all_stats_input_value[stats], stats, 1)
+            layout_for_stats_button.addWidget(all_stats_label[stats], stats, 0)
+            layout_for_stats_button.addWidget(all_stats_input_value[stats], stats, 1)
 
         push_button = ["Reset", "Calculate", "Exit"]
         all_button = []
@@ -28,11 +29,13 @@ class MainWindow(QMainWindow):
         for button in range(0,len(push_button)):
             temp_button = QPushButton(push_button[button])
             all_button.append(temp_button)
-            layout.addWidget(all_button[button], len(gear_stats) + 1, button)
+            layout_for_stats_button.addWidget(all_button[button], len(gear_stats) + 1, button)
+
+        result_label = QLabel()
+        layout_for_result.addWidget(result_label, len(gear_stats) + 2, 0)
 
         def calculate_button_onClicked():
             result = 0
-            result_label = QLabel()
             for stats in range(0,len(gear_stats)):
                 if all_stats_input_value[stats].text(): 
                     if gear_stats[stats] == "Speed: ":
@@ -45,18 +48,32 @@ class MainWindow(QMainWindow):
                     result += 0
             
             if result != 0:
-                result_label = QLabel("Current gear WSS: " + (str(result)))
+                result_label.setText("Current gear WSS: " + (str(result)))
             else:
-                result_label = QLabel("Please input stats")
+                result_label.setText("Please input stats")
 
-            layout.addWidget(result_label, len(gear_stats) + 2, 0)
+        def reset_button_onClicked():
+            for input_value in range(0, len(all_stats_input_value)):
+                all_stats_input_value[input_value].clear()
+
+            result_label.clear()
+
+
+        def exit_button_onClicked():
+            app.quit()
 
         all_button[1].clicked.connect(calculate_button_onClicked)
+        all_button[0].clicked.connect(reset_button_onClicked)
+        all_button[2].clicked.connect(exit_button_onClicked)
+
+        mainLayout = QVBoxLayout()
+        mainLayout.addLayout(layout_for_stats_button)
+        mainLayout.addLayout(layout_for_result)
 
         widget = QWidget()
-        widget.setLayout(layout)
-        self.setCentralWidget(widget)
+        widget.setLayout(mainLayout)
 
+        self.setCentralWidget(widget)
 
 
 app = QApplication(sys.argv)
