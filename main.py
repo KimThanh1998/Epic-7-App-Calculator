@@ -91,19 +91,19 @@ class MainWindow(QMainWindow):
 
     def calculate_result_for_item_85(self, WSS_value):
         if self.item_level_input == 85:
-            if self.upgrade_level_input == 0 and WSS_value >= 22:
+            if self.upgrade_level_input == 0 and WSS_value >= 20:
                 self.final_result_label.setText("UPGRADEABLE: Result WSS: {} >= {}".format(WSS_value, 20))
                 self.final_result_label.setStyleSheet("color: green;")
-            elif self.upgrade_level_input == 3 and WSS_value >= 29:
+            elif self.upgrade_level_input == 3 and WSS_value >= 26:
                 self.final_result_label.setText("UPGRADEABLE: Result WSS: {} >= {}".format(WSS_value, 26))
                 self.final_result_label.setStyleSheet("color: green;")
-            elif self.upgrade_level_input == 6 and WSS_value >= 36:
+            elif self.upgrade_level_input == 6 and WSS_value >= 32:
                 self.final_result_label.setText("UPGRADEABLE: Result WSS: {} >= {}".format(WSS_value, 32))
                 self.final_result_label.setStyleSheet("color: green;")
-            elif self.upgrade_level_input == 9 and WSS_value >= 42:
+            elif self.upgrade_level_input == 9 and WSS_value >= 38:
                 self.final_result_label.setText("UPGRADEABLE: Result WSS: {} >= {}".format(WSS_value, 38))
                 self.final_result_label.setStyleSheet("color: green;")
-            elif self.upgrade_level_input == 12 and WSS_value >= 48:
+            elif self.upgrade_level_input == 12 and WSS_value >= 44:
                 self.final_result_label.setText("UPGRADEABLE: Result WSS: {} >= {}".format(WSS_value, 44))
                 self.final_result_label.setStyleSheet("color: green;")
             else:
