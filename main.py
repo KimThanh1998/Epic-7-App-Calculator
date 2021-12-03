@@ -8,7 +8,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
 
-        self.gear_stats = ["Attack(%): ", "Defence(%): ", "HP(%): ", "Effective(%): ", "Resistance(%): ", "Speed: ", "Crit.Chance(%): ", "Crit.Damg(%): ", "Upgrade Level: ", "Item Level: "]
+        self.gear_stats = ["Stat 1: ", "Stat 2: ", "Stat 3: ", "Stat 4: ", "Speed: ", "Crit.Chance(%): ", "Upgrade Level: ", "Item Level: "]
         self.upgrade_level = ["0", "3", "6", "9", "12"]
         self.push_button = ["Reset", "Calculate", "Exit"]
         self.item_level = ["85", "88"]
